@@ -1,0 +1,11 @@
+#kuaipan-linux
+    Author: LongChangjin
+    E-mail: admin@longchangjin.cn
+
+#About
+    金山快盘的一个linux客户端程序。具有文件上传、下载等功能。
+    程序所信赖的oauth库和poster库已包含在里面了。
+
+
+        2012.06.16
+
