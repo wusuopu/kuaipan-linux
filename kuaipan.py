@@ -27,11 +27,10 @@ from client import KuaipanAPI
 from session import KuaipanSession
 
 class Kuaipan:
-    _consumer_key = "xcGPV8zLpWMRK0sD"
-    _consumer_secret = "3Q2ViEWwiWOEbMcT"
+    _consumer_key = "xcAA77bSrR1XERec"
+    _consumer_secret = "HqOtBOyuPFIkYrGo"
     
-    def __init__(self, app_type="app_folder"):
-        #sess = KuaipanSession(self._consumer_key, self._consumer_secret, "kuaipan")
+    def __init__(self, app_type="kuaipan"):
         sess = KuaipanSession(self._consumer_key, self._consumer_secret, app_type)
         self.api = KuaipanAPI(sess)
         if os.path.exists('.token'):

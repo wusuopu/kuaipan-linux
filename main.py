@@ -49,12 +49,14 @@ class KP_fs(fuse.LoggingMixIn, fuse.Operations):
             time.sleep(300)
     def get_list(self, path):
         dir_list = self.kp.metadata(path)
-        return dir_list['files']
+        if dir_list != False:
+            return dir_list['files']
+        return []
     def walk_recursion(self, path):
         data_list = self.get_list(path)
         for d_list in data_list:
             if d_list['type'] == "folder":
-                d_list['files'] = self.walk_recursion(path + d_list['name'])
+                d_list['files'] = self.walk_recursion(path + '/' + d_list['name'])
         return data_list
     #文件属性
     def getattr(self, path, fh=None):
@@ -153,4 +155,4 @@ if __name__ == "__main__":
     print(u"|\t博客：http://www.xefan.com             ")
     print(u"|\t邮箱：admin@xefan.com                   ")
     print(u"|--------------------------------------------------")
-    fuse = fuse.FUSE(KP_fs("app_folder"), sys.argv[1], foreground=True)
+    fuse = fuse.FUSE(KP_fs("kuaipan"), sys.argv[1], foreground=True)
